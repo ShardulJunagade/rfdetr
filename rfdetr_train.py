@@ -1,11 +1,8 @@
 from rfdetr import RFDETRBase
 import pandas as pd
-import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
-
-dataset_path = "./data/haryana_to_test_bihar"
-output_path = "./runs/haryana_to_test_bihar"
+dataset_path = "./data/thera_bihar_to_test_bihar"
+output_path = "./runs/thera_bihar_to_test_bihar"
 
 
 model = RFDETRBase()
@@ -29,6 +26,8 @@ model.train(
 pd.DataFrame(history).to_csv(f"{output_path}/history.csv", index=False)
 
 
-# nohup python rfdetr_train.py > ./logs/haryana_to_test_bihar.log 2>&1 &
 
-# nohup python rfdetr_train.py > ./logs/haryana_to_test_bihar.log 2>&1 &
+# source .venv/bin/activate
+# export CUDA_VISIBLE_DEVICES=1
+# nohup python rfdetr_train.py > ./logs/thera_bihar_to_test_bihar.log 2>&1 &
+# tensorboard --logdir ./runs/thera_bihar_to_test_bihar

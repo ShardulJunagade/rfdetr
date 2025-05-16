@@ -6,17 +6,26 @@ from PIL import Image
 from tqdm import tqdm
 
 # Set your source and output folder paths here
-source_folders = [
-    "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/swinir_data/bihar_same_class_count_10_120_1000_4x/images",
-    "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/swinir_data/haryana_same_class_count_10_120_1000_4x/images",
-    "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/swinir_data/test_bihar_same_class_count_10_120_1000_4x/images",
-]
+# source_folders = [
+#     "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/swinir_data/bihar_same_class_count_10_120_1000_4x/images",
+#     "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/swinir_data/haryana_same_class_count_10_120_1000_4x/images",
+#     "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/swinir_data/test_bihar_same_class_count_10_120_1000_4x/images",
+# ]
 
-output_folders = [
-    "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/swinir/bihar_4x train",
-    "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/swinir/haryana_4x train",
-    "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/swinir/test_bihar_4x test",
-]
+# output_folders = [
+#     "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/swinir/bihar_4x train",
+#     "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/swinir/haryana_4x train",
+#     "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/swinir/test_bihar_4x test",
+# ]
+
+source_folders = ["/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/train/images",
+                    "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/val/images",
+                    "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/test/images"]
+
+output_folders = ["/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/train/images_jpg",
+                    "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/val/images_jpg",
+                    "/home/shardul.junagade/my-work/domain-adaptation-brick-kilns/rfdetr/data/test/images_jpg"]
+
 
 # Ensure the number of source and output folders match
 if len(source_folders) != len(output_folders):

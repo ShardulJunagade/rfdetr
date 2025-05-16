@@ -1,8 +1,9 @@
 from rfdetr import RFDETRBase, RFDETRLarge
 import pandas as pd
+import os
 
-dataset_path = "./data/haryana_to_test_bihar"
-output_path = "./runs/haryana_to_test_bihar"
+dataset_path = "./data/sentinel_coco_data"
+output_path = "./runs/sentinel_data"
 
 # model = RFDETRBase()
 model = RFDETRLarge()
@@ -13,22 +14,31 @@ model.callbacks["on_fit_epoch_end"].append(callback2)
 
 model.train(
     dataset_dir=dataset_path,
-    epochs=100,
+    epochs=50,
     # batch_size=32,
-    batch_size=16,
+    batch_size=20,
     grad_accum_steps=1,
     lr=2e-4,
     output_dir=output_path,
-    # resume="runs/haryana_to_test_bihar/checkpoint0079.pth",
+    # resume="runs/sentinel_data/checkpoint0079.pth",
     tensorboard=True,
     # early_stopping=True
 )
 
+history_file = f"{output_path}/history.csv"
+if os.path.exists(history_file):
+    existing_history = pd.read_csv(history_file)
+    updated_history = pd.concat([existing_history, pd.DataFrame(history)], ignore_index=True)
+    updated_history.to_csv(history_file, index=False)
+else:
+    pd.DataFrame(history).to_csv(history_file, index=False)
 
-pd.DataFrame(history).to_csv(f"{output_path}/history.csv", index=False)
 
 
+## Training ##
 # source .venv/bin/activate
-# export CUDA_VISIBLE_DEVICES=3
-# nohup python rfdetr_train.py > ./logs/rfdetr_large/haryana_to_test_bihar.log 2>&1 &
-# tensorboard --logdir ./runs/haryana_to_test_bihar
+# export CUDA_VISIBLE_DEVICES=2
+# nohup python rfdetr_train.py > ./logs/rfdetr_large/sentinel_data.log 2>&1 &
+
+# # Tensorboard log
+# tensorboard --logdir ./runs/sentinel_data 
